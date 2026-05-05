@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.budgetapp.ui.DashboardController"
+      styleClass="root">
+
+    <HBox styleClass="nav-bar" spacing="10">
+        <Button text="Home" onAction="#onHome" styleClass="nav-button"/>
+        <Button text="Add Transaction" onAction="#onAddTransaction" styleClass="nav-button"/>
+        <Button text="Budgets" onAction="#onBudgets" styleClass="nav-button"/>
+        <Button text="Goals" onAction="#onGoals" styleClass="nav-button"/>
+        <Button text="Reports" onAction="#onReports" styleClass="nav-button"/>
+        <Button text="Profile" onAction="#onProfile" styleClass="nav-button"/>
+        <Button text="History" onAction="#onHistory" styleClass="nav-button"/>
+        <Button text="Notifications" onAction="#onNotifications" styleClass="nav-button"/>
+        <Button text="Export" onAction="#onExport" styleClass="nav-button"/>
+        <Button text="Categories" onAction="#onManageCategories" styleClass="nav-button"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Logout" onAction="#onLogout" styleClass="nav-button"/>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" style="-fx-background: #F5F7FA; -fx-background-color: transparent;">
+        <VBox spacing="20" style="-fx-padding: 20;">
+
+            <VBox styleClass="card" spacing="10">
+                <Label text="Total Balance" style="-fx-font-size: 16px; -fx-text-fill: #666;"/>
+                <Label fx:id="balanceLabel" styleClass="total-balance"/>
+                <HBox spacing="20">
+                    <Label text="Monthly Income: ">
+                        <Label fx:id="monthlyIncomeLabel" styleClass="income-text"/>
+                    </Label>
+                    <Label text="Monthly Expenses: ">
+                        <Label fx:id="monthlyExpenseLabel" styleClass="expense-text"/>
+                    </Label>
+                </HBox>
+            </VBox>
+
+            <VBox styleClass="card" spacing="10">
+                <Label text="Recent Transactions" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <ListView fx:id="recentTransactionsList" prefHeight="150"/>
+            </VBox>
+
+            <VBox styleClass="card" spacing="10">
+                <Label text="Budget Alerts" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <ListView fx:id="alertsList" prefHeight="100"/>
+            </VBox>
+
+        </VBox>
+    </ScrollPane>
+</VBox>
