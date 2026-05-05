@@ -5,6 +5,8 @@ CREATE TABLE IF NOT EXISTS users (
     password_hash TEXT NOT NULL,
     currency TEXT DEFAULT 'EGP',
     language TEXT DEFAULT 'en',
+    budget_alerts_enabled BOOLEAN DEFAULT 1,
+    goal_reminders_enabled BOOLEAN DEFAULT 1,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -15,8 +17,9 @@ CREATE TABLE IF NOT EXISTS categories (
     is_default BOOLEAN DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
 INSERT OR IGNORE INTO categories (name, is_default) VALUES
-    ('Food',1),('Transport',1),('Bills',1),('Entertainment',1),('Shopping',1),('Health',1);
+    ('Food',1), ('Transport',1), ('Bills',1), ('Entertainment',1), ('Shopping',1), ('Health',1);
 
 CREATE TABLE IF NOT EXISTS transactions (
     transaction_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -64,7 +67,3 @@ CREATE TABLE IF NOT EXISTS notifications (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
-
-ALTER TABLE transactions ADD COLUMN is_recurring BOOLEAN DEFAULT 0;
-ALTER TABLE transactions ADD COLUMN recurrence_interval TEXT;
-ALTER TABLE transactions ADD COLUMN recurring_end_date DATE;
