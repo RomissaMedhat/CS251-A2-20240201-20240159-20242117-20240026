@@ -1,0 +1,12 @@
+<VBox spacing="15" styleClass="root">
+    <HBox styleClass="nav-bar"> <Button text="Home" onAction="#goHome" styleClass="nav-button"/> </HBox>
+    <VBox spacing="10" style="-fx-padding: 20;">
+        <HBox spacing="10">
+            <ComboBox fx:id="categoryFilter"/>
+            <DatePicker fx:id="startDate"/>
+            <DatePicker fx:id="endDate"/>
+            <Button text="Filter" onAction="#onApplyFilter" styleClass="button-primary"/>
+        </HBox>
+        <ListView fx:id="transactionList"/>
+    </VBox>
+</VBox>

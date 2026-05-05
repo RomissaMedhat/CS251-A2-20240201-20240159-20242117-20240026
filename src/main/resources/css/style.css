@@ -1,0 +1,47 @@
+.root {
+-fx-font-family: 'Segoe UI', sans-serif;
+-fx-background-color: #F5F7FA;
+}
+.nav-bar {
+-fx-background-color: #2C3E50;
+-fx-padding: 10 20;
+-fx-spacing: 15;
+}
+.nav-button {
+-fx-background-color: transparent;
+-fx-text-fill: white;
+-fx-font-weight: bold;
+-fx-padding: 8 15;
+-fx-cursor: hand;
+}
+.nav-button:hover {
+-fx-background-color: #1ABC9C;
+-fx-text-fill: #2C3E50;
+}
+.card {
+-fx-background-color: white;
+-fx-background-radius: 10;
+-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);
+-fx-padding: 15;
+}
+.income-text {
+-fx-text-fill: #27AE60;
+-fx-font-weight: bold;
+}
+.expense-text {
+-fx-text-fill: #E74C3C;
+-fx-font-weight: bold;
+}
+.alert-text {
+-fx-text-fill: #F39C12;
+}
+.button-primary {
+-fx-background-color: #2C3E50;
+-fx-text-fill: white;
+-fx-background-radius: 5;
+-fx-padding: 8 16;
+-fx-cursor: hand;
+}
+.button-primary:hover {
+-fx-background-color: #1ABC9C;
+}

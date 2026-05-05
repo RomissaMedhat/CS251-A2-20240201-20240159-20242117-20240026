@@ -1,0 +1,13 @@
+<VBox spacing="15" styleClass="root">
+    <HBox styleClass="nav-bar"> <Button text="Home" onAction="#goHome" styleClass="nav-button"/> </HBox>
+    <VBox spacing="10" style="-fx-padding: 20;">
+        <Label text="Edit Profile"/>
+        <TextField fx:id="nameField" promptText="Name"/>
+        <TextField fx:id="currencyField" promptText="Currency"/>
+        <ComboBox fx:id="languageCombo" promptText="Language"/>
+        <CheckBox fx:id="budgetAlertsCheck" text="Budget alerts"/>
+        <CheckBox fx:id="goalRemindersCheck" text="Goal reminders"/>
+        <Button text="Save" onAction="#onSave" styleClass="button-primary"/>
+        <Label fx:id="statusLabel"/>
+    </VBox>
+</VBox>

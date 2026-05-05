@@ -1,0 +1,16 @@
+<VBox spacing="15" styleClass="root">
+    <HBox styleClass="nav-bar"> <Button text="Home" onAction="#goHome" styleClass="nav-button"/> </HBox>
+    <VBox spacing="10" style="-fx-padding: 20;">
+        <Label text="Manage Categories"/>
+        <HBox spacing="10">
+            <TextField fx:id="newCategoryName" promptText="New category name"/>
+            <Button text="Add" onAction="#onAddCategory" styleClass="button-primary"/>
+        </HBox>
+        <ListView fx:id="categoryList"/>
+        <HBox spacing="10">
+            <Button text="Edit" onAction="#onEditCategory"/>
+            <Button text="Delete" onAction="#onDeleteCategory"/>
+        </HBox>
+        <Label fx:id="statusLabel"/>
+    </VBox>
+</VBox>
