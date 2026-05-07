@@ -35,7 +35,7 @@ public class DashboardController extends BaseController {
                 recent.stream().map(t -> t.getDate().toLocalDate() + " | " + t.getType() + " | " + t.getAmount()).toList()
         );
 
-        List<com.budgetapp.model.Notification> alerts = AlertService.getInstance().getUnreadMessages(userId);
+        List<com.budgetapp.model.Notification> alerts = ((AlertService) AlertService.getInstance()).getUnreadMessages(userId);
         alertsList.getItems().setAll(
                 alerts.stream().map(n -> n.getMessage()).toList()
         );

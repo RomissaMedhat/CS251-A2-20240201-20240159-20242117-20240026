@@ -23,7 +23,7 @@ public class ReportService {
         Map<String, Double> map = new HashMap<>();
         for (Transaction t : txns) {
             if (t.getType() == TransactionType.EXPENSE) {
-                String cat = String.valueOf(t.getCategoryId()); // ideally fetch category name
+                String cat = String.valueOf(t.getCategoryId());
                 map.put(cat, map.getOrDefault(cat, 0.0) + t.getAmount());
             }
         }

@@ -7,6 +7,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class AlertService implements BudgetObserver {
+
+    public static Object getInstance() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     private final NotificationDAO notificationDAO;
 
     public AlertService() { notificationDAO = new NotificationDAO(); }
@@ -43,5 +47,10 @@ public class AlertService implements BudgetObserver {
 
     public void markAsRead(int notificationId) {
         notificationDAO.markAsRead(notificationId);
+    }
+
+    public static AlertService getInstance1() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getInstance'");
     }
 }

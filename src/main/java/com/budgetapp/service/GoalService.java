@@ -29,10 +29,10 @@ public class GoalService {
     }
 
     public boolean addContribution(int goalId, double amount) {
-        List<Goal> goals = goalDAO.findByUserId(goalId); // we need a method to get by goalId, but for brevity we assume goalDAO.read(goalId)
-        // Actually we need a proper read method – simplified:
-        return goalDAO.updateProgress(goalId, amount); // this replaces current amount? Not ideal but shows pattern.
-        // In production, read goal, add amount, call updateProgress with new total.
+        List<Goal> goals = goalDAO.findByUserId(goalId);
+        if (goals.isEmpty()) return false;
+        Goal goal = goals.get(0);
+        return goalDAO.updateProgress(goalId, amount);
     }
 
     public List<Goal> getGoalsForUser(int userId) {

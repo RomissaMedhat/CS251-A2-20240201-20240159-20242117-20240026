@@ -12,8 +12,8 @@ public class NotificationsController extends BaseController {
     @FXML
     public void initialize() {
         userId = AuthService.getInstance().getCurrentUser().get().getUserId();
-        var notifs = AlertService.getInstance().getUnreadMessages(userId);
+        var notifs = ((AlertService) AlertService.getInstance()).getUnreadMessages(userId);
         notificationsList.getItems().setAll(notifs.stream().map(n -> n.getMessage()).toList());
-        notifs.forEach(n -> AlertService.getInstance().markAsRead(n.getNotificationId()));
+        notifs.forEach(n -> ((AlertService) AlertService.getInstance()).markAsRead(n.getNotificationId()));
     }
 }

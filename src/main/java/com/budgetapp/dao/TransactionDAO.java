@@ -83,14 +83,16 @@ public class TransactionDAO implements GenericDAO<Transaction> {
                 pstmt.setObject(i + 1, params[i]);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                Transaction t = new Transaction();
-                t.setTransactionId(rs.getInt("transaction_id"));
-                t.setUserId(rs.getInt("user_id"));
-                t.setAmount(rs.getDouble("amount"));
-                t.setType(TransactionType.valueOf(rs.getString("type")));
-                t.setCategoryId(rs.getInt("category_id"));
-                t.setDescription(rs.getString("description"));
-                t.setDate(rs.getTimestamp("transaction_date").toLocalDateTime());
+                Transaction t = new Transaction(
+                    rs.getDouble("amount"),
+                    rs.getInt("user_id"),
+                    rs.getTimestamp("transaction_date").toLocalDateTime(),
+                    rs.getString("description"),
+                    rs.getString("type"),
+                    rs.getInt("category_id"),
+                    TransactionType.valueOf(rs.getString("type")),
+                    rs.getInt("transaction_id")
+                );
                 list.add(t);
             }
         } catch (SQLException e) {
