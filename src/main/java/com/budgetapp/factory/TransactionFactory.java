@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 public class TransactionFactory {
     public static Transaction createExpense(int userId, double amount, int categoryId, String desc) {
-        Transaction t = new Transaction();
+        Transaction t = new Transaction(categoryId, categoryId, null, desc, desc, categoryId, null, categoryId);
         t.setUserId(userId);
         t.setAmount(amount);
         t.setType(TransactionType.EXPENSE);
@@ -17,7 +17,7 @@ public class TransactionFactory {
     }
 
     public static Transaction createIncome(int userId, double amount, int categoryId, String desc) {
-        Transaction t = new Transaction();
+        Transaction t = new Transaction(categoryId, categoryId, null, desc, desc, categoryId, null, categoryId);
         t.setUserId(userId);
         t.setAmount(amount);
         t.setType(TransactionType.INCOME);
