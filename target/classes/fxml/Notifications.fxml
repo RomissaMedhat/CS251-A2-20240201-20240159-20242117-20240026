@@ -1,7 +1,15 @@
-<VBox spacing="15" styleClass="root">
-    <HBox styleClass="nav-bar"> <Button text="Home" onAction="#goHome" styleClass="nav-button"/> </HBox>
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="15" styleClass="root"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.budgetapp.ui.NotificationsController">
+    <HBox styleClass="nav-bar">
+        <Button text="%dashboard.home" onAction="#onHome" styleClass="nav-button"/>
+    </HBox>
     <VBox spacing="10" style="-fx-padding: 20;">
-        <Label text="Notifications"/>
+        <Label text="%notifications.title"/>
         <ListView fx:id="notificationsList"/>
     </VBox>
 </VBox>

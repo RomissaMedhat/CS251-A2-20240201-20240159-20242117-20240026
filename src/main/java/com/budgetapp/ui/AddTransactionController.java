@@ -7,7 +7,8 @@ import com.budgetapp.service.TransactionService;
 import com.budgetapp.model.Category;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.Node;
+import javafx.animation.PauseTransition;
+import javafx.util.Duration;
 
 public class AddTransactionController extends BaseController {
     @FXML private ComboBox<String> typeCombo;
@@ -15,7 +16,6 @@ public class AddTransactionController extends BaseController {
     @FXML private ComboBox<String> categoryCombo;
     @FXML private TextArea descriptionArea;
     @FXML private Label statusLabel;
-
     private int userId;
 
     @FXML
@@ -28,7 +28,7 @@ public class AddTransactionController extends BaseController {
     }
 
     @FXML
-    public void onSave(Node node) {
+    public void onSave() {
         try {
             double amount = Double.parseDouble(amountField.getText());
             String type = typeCombo.getValue();
@@ -39,8 +39,9 @@ public class AddTransactionController extends BaseController {
                     : TransactionFactory.createExpense(userId, amount, catId, descriptionArea.getText());
             if (TransactionService.getInstance().addTransaction(tx)) {
                 statusLabel.setText("Saved! Redirecting...");
-                new javafx.animation.PauseTransition(javafx.util.Duration.seconds(1))
-                        .setOnFinished(e -> goHome(node));
+                PauseTransition delay = new PauseTransition(Duration.seconds(1));
+                delay.setOnFinished(e -> goHome());
+                delay.play();
             } else {
                 statusLabel.setText("Save failed.");
             }
@@ -48,4 +49,7 @@ public class AddTransactionController extends BaseController {
             statusLabel.setText("Error: " + e.getMessage());
         }
     }
+
+    @FXML
+    public void onHome() { goHome(); }
 }

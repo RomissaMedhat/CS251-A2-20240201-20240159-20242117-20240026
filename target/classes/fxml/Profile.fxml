@@ -1,13 +1,21 @@
-<VBox spacing="15" styleClass="root">
-    <HBox styleClass="nav-bar"> <Button text="Home" onAction="#goHome" styleClass="nav-button"/> </HBox>
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="15" styleClass="root"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.budgetapp.ui.ProfileController">
+    <HBox styleClass="nav-bar">
+        <Button text="%dashboard.home" onAction="#onHome" styleClass="nav-button"/>
+    </HBox>
     <VBox spacing="10" style="-fx-padding: 20;">
-        <Label text="Edit Profile"/>
-        <TextField fx:id="nameField" promptText="Name"/>
-        <TextField fx:id="currencyField" promptText="Currency"/>
-        <ComboBox fx:id="languageCombo" promptText="Language"/>
-        <CheckBox fx:id="budgetAlertsCheck" text="Budget alerts"/>
-        <CheckBox fx:id="goalRemindersCheck" text="Goal reminders"/>
-        <Button text="Save" onAction="#onSave" styleClass="button-primary"/>
+        <Label text="%profile.title"/>
+        <TextField fx:id="nameField" promptText="%profile.name"/>
+        <TextField fx:id="currencyField" promptText="%profile.currency"/>
+        <ComboBox fx:id="languageCombo" promptText="%profile.language"/>
+        <CheckBox fx:id="budgetAlertsCheck" text="%profile.budgetAlerts"/>
+        <CheckBox fx:id="goalRemindersCheck" text="%profile.goalReminders"/>
+        <Button text="%profile.save" onAction="#onSave" styleClass="button-primary"/>
         <Label fx:id="statusLabel"/>
     </VBox>
 </VBox>

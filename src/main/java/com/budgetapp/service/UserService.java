@@ -16,12 +16,4 @@ public class UserService {
     public boolean updateProfile(User user) {
         return userDAO.updateProfile(user);
     }
-
-    public boolean updateNotificationSettings(int userId, boolean budgetAlerts, boolean goalReminders) {
-        User user = userDAO.read(userId).orElse(null);
-        if (user == null) return false;
-        user.setBudgetAlertsEnabled(budgetAlerts);
-        user.setGoalRemindersEnabled(goalReminders);
-        return userDAO.updateProfile(user);
-    }
 }

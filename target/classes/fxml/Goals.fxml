@@ -1,12 +1,20 @@
-<VBox spacing="15" styleClass="root">
-    <HBox styleClass="nav-bar"> <Button text="Home" onAction="#goHome" styleClass="nav-button"/> </HBox>
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="15" styleClass="root"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.budgetapp.ui.GoalsController">
+    <HBox styleClass="nav-bar">
+        <Button text="%dashboard.home" onAction="#onHome" styleClass="nav-button"/>
+    </HBox>
     <VBox spacing="10" style="-fx-padding: 20;">
-        <Label text="Savings Goals"/>
+        <Label text="%goals.title"/>
         <HBox spacing="10">
-            <TextField fx:id="goalNameField" promptText="Goal Name"/>
-            <TextField fx:id="targetField" promptText="Target Amount"/>
-            <DatePicker fx:id="deadlinePicker"/>
-            <Button text="Add Goal" onAction="#onCreateGoal" styleClass="button-primary"/>
+            <TextField fx:id="goalNameField" promptText="%goals.name"/>
+            <TextField fx:id="targetField" promptText="%goals.target"/>
+            <DatePicker fx:id="deadlinePicker" promptText="%goals.deadline"/>
+            <Button text="%goals.add" onAction="#onCreateGoal" styleClass="button-primary"/>
         </HBox>
         <ListView fx:id="goalsList"/>
         <Label fx:id="statusLabel"/>

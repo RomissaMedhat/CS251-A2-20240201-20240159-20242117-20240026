@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox spacing="15" styleClass="root" xmlns="http://javafx.com/javafx/17">
+<VBox spacing="15" styleClass="root"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.budgetapp.ui.AddTransactionController">
     <HBox styleClass="nav-bar">
-        <Button text="Home" onAction="#goHome" styleClass="nav-button"/>
+        <Button text="%dashboard.home" onAction="#onHome" styleClass="nav-button"/>
     </HBox>
     <VBox spacing="10" style="-fx-padding: 20;">
-        <Label text="Add Transaction" style="-fx-font-size: 20px;"/>
-        <ComboBox fx:id="typeCombo" promptText="Type"/>
-        <TextField fx:id="amountField" promptText="Amount"/>
-        <ComboBox fx:id="categoryCombo" promptText="Category"/>
-        <TextArea fx:id="descriptionArea" promptText="Description (optional)"/>
-        <Button text="Save" onAction="#onSave" styleClass="button-primary"/>
+        <Label text="%addTransaction.title" style="-fx-font-size: 20px;"/>
+        <ComboBox fx:id="typeCombo" promptText="%addTransaction.type"/>
+        <TextField fx:id="amountField" promptText="%addTransaction.amount"/>
+        <ComboBox fx:id="categoryCombo" promptText="%addTransaction.category"/>
+        <TextArea fx:id="descriptionArea" promptText="%addTransaction.description"/>
+        <Button text="%addTransaction.save" onAction="#onSave" styleClass="button-primary"/>
         <Label fx:id="statusLabel"/>
     </VBox>
 </VBox>

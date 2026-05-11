@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox alignment="CENTER" spacing="20" styleClass="root" xmlns="http://javafx.com/javafx/17">
-    <Label text="Personal Budgeting App" style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+<VBox alignment="CENTER" spacing="20" styleClass="root"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.budgetapp.ui.LoginController">
+
+    <Label text="Investors" styleClass="bubble-text" />
+
     <VBox spacing="15" styleClass="card" maxWidth="300">
-        <TextField fx:id="emailField" promptText="Email"/>
-        <PasswordField fx:id="passwordField" promptText="Password"/>
-        <Button text="Login" onAction="#onLogin" styleClass="button-primary"/>
-        <Button text="Create Account" onAction="#onRegister"/>
+        <TextField fx:id="emailField" promptText="%login.email"/>
+        <PasswordField fx:id="passwordField" promptText="%login.password"/>
+        <Button text="%login.button" onAction="#onLogin" styleClass="button-primary"/>
+        <Button text="%login.register" onAction="#onRegister" styleClass="button-primary"/>
         <Label fx:id="errorLabel" styleClass="alert-text"/>
     </VBox>
 </VBox>

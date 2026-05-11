@@ -1,11 +1,19 @@
-<VBox spacing="15" styleClass="root">
-    <HBox styleClass="nav-bar"> <Button text="Home" onAction="#goHome" styleClass="nav-button"/> </HBox>
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="15" styleClass="root"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.budgetapp.ui.TransactionHistoryController">
+    <HBox styleClass="nav-bar">
+        <Button text="%dashboard.home" onAction="#onHome" styleClass="nav-button"/>
+    </HBox>
     <VBox spacing="10" style="-fx-padding: 20;">
         <HBox spacing="10">
-            <ComboBox fx:id="categoryFilter"/>
+            <ComboBox fx:id="categoryFilter" promptText="%history.category"/>
             <DatePicker fx:id="startDate"/>
             <DatePicker fx:id="endDate"/>
-            <Button text="Filter" onAction="#onApplyFilter" styleClass="button-primary"/>
+            <Button text="%history.filter" onAction="#onApplyFilter" styleClass="button-primary"/>
         </HBox>
         <ListView fx:id="transactionList"/>
     </VBox>

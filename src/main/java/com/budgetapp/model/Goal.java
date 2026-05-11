@@ -11,20 +11,6 @@ public class Goal {
     private LocalDate deadline;
     private GoalStatus status;
 
-    public Goal(double currentAmount, LocalDate deadline, int goalId, String name, GoalStatus status, double targetAmount, int userId) {
-        this.currentAmount = currentAmount;
-        this.deadline = deadline;
-        this.goalId = goalId;
-        this.name = name;
-        this.status = status;
-        this.targetAmount = targetAmount;
-        this.userId = userId;
-    }
-
-    public Goal() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     public int getGoalId() { return goalId; }
     public void setGoalId(int goalId) { this.goalId = goalId; }
     public int getUserId() { return userId; }
@@ -43,11 +29,5 @@ public class Goal {
     public double calculateProgress() {
         if (targetAmount == 0) return 0;
         return (currentAmount / targetAmount) * 100;
-    }
-    public boolean addContribution(double amount) {
-        if (amount <= 0) return false;
-        this.currentAmount += amount;
-        if (this.currentAmount >= this.targetAmount) this.status = GoalStatus.COMPLETED;
-        return true;
     }
 }

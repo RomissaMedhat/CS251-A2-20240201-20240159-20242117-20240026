@@ -46,6 +46,21 @@ public class BudgetsController extends BaseController {
     }
 
     private void refreshList() {
-        budgetsList.getItems().setAll("Budgets will appear here – implement BudgetService.getBudgetsForUser()");
+        var budgets = BudgetService.getInstance().getBudgetsForUser(userId);
+        budgetsList.getItems().setAll(
+                budgets.stream().map(b -> {
+                    String catName = CategoryService.getInstance().getUserCategories(userId).stream()
+                            .filter(c -> c.getCategoryId() == b.getCategoryId())
+                            .findFirst().map(Category::getName).orElse("Unknown");
+                    return String.format("%s: %.2f / %.2f (%.1f%%)",
+                            catName, b.getSpent(), b.getAmount(), b.getPercentageUsed());
+                }).toList()
+        );
+        if (budgets.isEmpty()) {
+            budgetsList.setPlaceholder(new Label("No budgets created yet."));
+        }
     }
+
+    @FXML
+    public void onHome() { goHome(); }
 }

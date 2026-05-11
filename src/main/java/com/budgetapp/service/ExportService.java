@@ -27,11 +27,11 @@ public class ExportService {
             writer.write("Date,Type,Amount,CategoryId,Description\n");
             for (Transaction t : transactions) {
                 writer.write(String.format("%s,%s,%.2f,%d,%s\n",
-                    t.getDate().toLocalDate(),
-                    t.getType(),
-                    t.getAmount(),
-                    t.getCategoryId(),
-                    t.getDescription().replace(",", ";")));
+                        t.getDate().toLocalDate(),
+                        t.getType(),
+                        t.getAmount(),
+                        t.getCategoryId(),
+                        t.getDescription().replace(",", ";")));
             }
         }
         return filePath;

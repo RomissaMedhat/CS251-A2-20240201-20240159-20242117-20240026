@@ -28,13 +28,6 @@ public class GoalService {
         return goalDAO.create(g) > 0;
     }
 
-    public boolean addContribution(int goalId, double amount) {
-        List<Goal> goals = goalDAO.findByUserId(goalId);
-        if (goals.isEmpty()) return false;
-        Goal goal = goals.get(0);
-        return goalDAO.updateProgress(goalId, amount);
-    }
-
     public List<Goal> getGoalsForUser(int userId) {
         return goalDAO.findByUserId(userId);
     }

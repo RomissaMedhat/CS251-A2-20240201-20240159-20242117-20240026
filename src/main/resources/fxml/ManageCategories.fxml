@@ -1,15 +1,23 @@
-<VBox spacing="15" styleClass="root">
-    <HBox styleClass="nav-bar"> <Button text="Home" onAction="#goHome" styleClass="nav-button"/> </HBox>
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="15" styleClass="root"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.budgetapp.ui.ManageCategoriesController">
+    <HBox styleClass="nav-bar">
+        <Button text="%dashboard.home" onAction="#onHome" styleClass="nav-button"/>
+    </HBox>
     <VBox spacing="10" style="-fx-padding: 20;">
-        <Label text="Manage Categories"/>
+        <Label text="%categories.title"/>
         <HBox spacing="10">
-            <TextField fx:id="newCategoryName" promptText="New category name"/>
-            <Button text="Add" onAction="#onAddCategory" styleClass="button-primary"/>
+            <TextField fx:id="newCategoryName" promptText="%categories.new"/>
+            <Button text="%categories.add" onAction="#onAddCategory" styleClass="button-primary"/>
         </HBox>
         <ListView fx:id="categoryList"/>
         <HBox spacing="10">
-            <Button text="Edit" onAction="#onEditCategory"/>
-            <Button text="Delete" onAction="#onDeleteCategory"/>
+            <Button text="%categories.edit" onAction="#onEditCategory" styleClass="button-secondary"/>
+            <Button text="%categories.delete" onAction="#onDeleteCategory" styleClass="button-secondary"/>
         </HBox>
         <Label fx:id="statusLabel"/>
     </VBox>

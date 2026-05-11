@@ -4,16 +4,21 @@ import com.budgetapp.dao.NotificationDAO;
 import com.budgetapp.model.Notification;
 import com.budgetapp.model.User;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AlertService implements BudgetObserver {
-
-    public static Object getInstance() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    private static AlertService instance;
     private final NotificationDAO notificationDAO;
 
-    public AlertService() { notificationDAO = new NotificationDAO(); }
+    private AlertService() { notificationDAO = new NotificationDAO(); }
+
+    public static synchronized AlertService getInstance() {
+        if (instance == null) {
+            instance = new AlertService();
+        }
+        return instance;
+    }
 
     @Override
     public void onBudgetWarning(int categoryId, double percentageUsed) {
@@ -42,15 +47,11 @@ public class AlertService implements BudgetObserver {
     }
 
     public List<Notification> getUnreadMessages(int userId) {
-        return notificationDAO.findByUserAndUnread(userId);
+        List<Notification> list = notificationDAO.findByUserAndUnread(userId);
+        return list != null ? list : new ArrayList<>();
     }
 
     public void markAsRead(int notificationId) {
         notificationDAO.markAsRead(notificationId);
-    }
-
-    public static AlertService getInstance1() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getInstance'");
     }
 }

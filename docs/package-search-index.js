@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.budgetapp"},{"l":"com.budgetapp.dao"},{"l":"com.budgetapp.factory"},{"l":"com.budgetapp.model"},{"l":"com.budgetapp.service"},{"l":"com.budgetapp.ui"}];updateSearchResults();

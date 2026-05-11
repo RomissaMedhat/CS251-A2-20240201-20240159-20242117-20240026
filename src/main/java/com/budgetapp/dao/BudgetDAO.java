@@ -9,7 +9,7 @@ public class BudgetDAO implements GenericDAO<Budget> {
     public int create(Budget b) {
         String sql = "INSERT INTO budgets (user_id, category_id, amount, spent, month, year, alert_threshold) VALUES (?,?,?,?,?,?,?)";
         try (Connection conn = DatabaseConnection.getConnection();
-                PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setInt(1, b.getUserId());
             pstmt.setInt(2, b.getCategoryId());
             pstmt.setDouble(3, b.getAmount());
@@ -19,41 +19,45 @@ public class BudgetDAO implements GenericDAO<Budget> {
             pstmt.setInt(7, b.getAlertThreshold());
             pstmt.executeUpdate();
             ResultSet rs = pstmt.getGeneratedKeys();
-            if (rs.next())
-                return rs.getInt(1);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            if (rs.next()) return rs.getInt(1);
+        } catch (SQLException e) { e.printStackTrace(); }
         return -1;
     }
 
     public Optional<Budget> findByUserCategoryMonth(int userId, int catId, int month, int year) {
         String sql = "SELECT * FROM budgets WHERE user_id = ? AND category_id = ? AND month = ? AND year = ?";
         try (Connection conn = DatabaseConnection.getConnection();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, userId);
             pstmt.setInt(2, catId);
             pstmt.setInt(3, month);
             pstmt.setInt(4, year);
             ResultSet rs = pstmt.executeQuery();
-            if (rs.next())
-                return Optional.of(map(rs));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            if (rs.next()) return Optional.of(map(rs));
+        } catch (SQLException e) { e.printStackTrace(); }
         return Optional.empty();
+    }
+
+    public List<Budget> findByUser(int userId) {
+        List<Budget> list = new ArrayList<>();
+        String sql = "SELECT * FROM budgets WHERE user_id = ? ORDER BY year DESC, month DESC";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, userId);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) list.add(map(rs));
+        } catch (SQLException e) { e.printStackTrace(); }
+        return list;
     }
 
     public boolean update(Budget b) {
         String sql = "UPDATE budgets SET spent = ? WHERE budget_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setDouble(1, b.getSpent());
             pstmt.setInt(2, b.getBudgetId());
             return pstmt.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
         return false;
     }
 
@@ -70,18 +74,7 @@ public class BudgetDAO implements GenericDAO<Budget> {
         return b;
     }
 
-    @Override
-    public Optional<Budget> read(int id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean delete(int id) {
-        return false;
-    }
-
-    @Override
-    public List<Budget> getAll() {
-        return new ArrayList<>();
-    }
+    @Override public Optional<Budget> read(int id) { return Optional.empty(); }
+    @Override public boolean delete(int id) { return false; }
+    @Override public List<Budget> getAll() { return new ArrayList<>(); }
 }

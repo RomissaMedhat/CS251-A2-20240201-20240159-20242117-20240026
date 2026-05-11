@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox spacing="15" styleClass="root">
-    <HBox styleClass="nav-bar"> <Button text="Home" onAction="#goHome" styleClass="nav-button"/> </HBox>
+<VBox spacing="15" styleClass="root"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.budgetapp.ui.BudgetsController">
+    <HBox styleClass="nav-bar">
+        <Button text="%dashboard.home" onAction="#onHome" styleClass="nav-button"/>
+    </HBox>
     <VBox spacing="10" style="-fx-padding: 20;">
-        <Label text="Monthly Budgets"/>
+        <Label text="%budgets.title"/>
         <HBox spacing="10">
-            <ComboBox fx:id="categoryCombo" promptText="Category"/>
-            <TextField fx:id="amountField" promptText="Amount"/>
-            <TextField fx:id="monthField" promptText="Month"/>
-            <TextField fx:id="yearField" promptText="Year"/>
-            <Button text="Set Budget" onAction="#onCreateBudget" styleClass="button-primary"/>
+            <ComboBox fx:id="categoryCombo" promptText="%budgets.category"/>
+            <TextField fx:id="amountField" promptText="%budgets.amount"/>
+            <TextField fx:id="monthField" promptText="%budgets.month"/>
+            <TextField fx:id="yearField" promptText="%budgets.year"/>
+            <Button text="%budgets.set" onAction="#onCreateBudget" styleClass="button-primary"/>
         </HBox>
         <ListView fx:id="budgetsList"/>
         <Label fx:id="statusLabel"/>

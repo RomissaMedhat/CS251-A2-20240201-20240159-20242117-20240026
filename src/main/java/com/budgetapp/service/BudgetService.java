@@ -47,4 +47,8 @@ public class BudgetService {
                 obs.onBudgetWarning(categoryId, percent);
         }
     }
+
+    public List<Budget> getBudgetsForUser(int userId) {
+        return budgetDAO.findByUser(userId);
+    }
 }

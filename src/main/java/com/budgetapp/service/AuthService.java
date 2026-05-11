@@ -31,9 +31,9 @@ public class AuthService {
     }
 
     public boolean login(String email, String password) {
-        Optional<User> opt = userDAO.findByEmail(email);
-        if (opt.isPresent() && PasswordHasher.verify(password, opt.get().getPasswordHash())) {
-            currentUser = opt.get();
+        Optional<User> user = userDAO.findByEmail(email);
+        if (user.isPresent() && PasswordHasher.verify(password, user.get().getPasswordHash())) {
+            currentUser = user.get();
             return true;
         }
         return false;

@@ -1,10 +1,18 @@
-<VBox spacing="15" styleClass="root">
-    <HBox styleClass="nav-bar"> <Button text="Home" onAction="#goHome" styleClass="nav-button"/> </HBox>
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="15" styleClass="root"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.budgetapp.ui.ExportController">
+    <HBox styleClass="nav-bar">
+        <Button text="%dashboard.home" onAction="#onHome" styleClass="nav-button"/>
+    </HBox>
     <VBox spacing="10" style="-fx-padding: 20;">
         <HBox spacing="10">
             <DatePicker fx:id="startDate"/>
             <DatePicker fx:id="endDate"/>
-            <Button text="Export CSV" onAction="#onExport" styleClass="button-primary"/>
+            <Button text="%export.csv" onAction="#onExport" styleClass="button-primary"/>
         </HBox>
         <Label fx:id="statusLabel"/>
     </VBox>

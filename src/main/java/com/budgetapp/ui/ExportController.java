@@ -36,4 +36,7 @@ public class ExportController extends BaseController {
             statusLabel.setText("Export failed: " + e.getMessage());
         }
     }
+
+    @FXML
+    public void onHome() { goHome(); }
 }

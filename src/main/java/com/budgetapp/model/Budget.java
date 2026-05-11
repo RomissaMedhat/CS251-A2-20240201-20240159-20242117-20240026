@@ -26,8 +26,5 @@ public class Budget {
     public void setYear(int year) { this.year = year; }
     public int getAlertThreshold() { return alertThreshold; }
     public void setAlertThreshold(int alertThreshold) { this.alertThreshold = alertThreshold; }
-
-    public double calculateRemaining() { return amount - spent; }
     public double getPercentageUsed() { return (amount == 0) ? 0 : (spent / amount) * 100; }
-    public boolean isExceeded() { return spent >= amount; }
 }

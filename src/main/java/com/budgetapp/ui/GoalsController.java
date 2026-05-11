@@ -38,6 +38,9 @@ public class GoalsController extends BaseController {
         }
     }
 
+    @FXML
+    public void onHome() { goHome(); }
+
     private void refreshGoals() {
         var goals = GoalService.getInstance().getGoalsForUser(userId);
         goalsList.getItems().setAll(

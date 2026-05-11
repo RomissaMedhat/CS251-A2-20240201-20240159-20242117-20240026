@@ -18,13 +18,12 @@ public class ReportService {
         return instance;
     }
 
-    public Map<String, Double> getExpenseByCategory(int userId, LocalDate start, LocalDate end) {
+    public Map<Integer, Double> getExpenseByCategory(int userId, LocalDate start, LocalDate end) {
         List<Transaction> txns = txDAO.findByDateRange(userId, start, end);
-        Map<String, Double> map = new HashMap<>();
+        Map<Integer, Double> map = new HashMap<>();
         for (Transaction t : txns) {
             if (t.getType() == TransactionType.EXPENSE) {
-                String cat = String.valueOf(t.getCategoryId());
-                map.put(cat, map.getOrDefault(cat, 0.0) + t.getAmount());
+                map.put(t.getCategoryId(), map.getOrDefault(t.getCategoryId(), 0.0) + t.getAmount());
             }
         }
         return map;

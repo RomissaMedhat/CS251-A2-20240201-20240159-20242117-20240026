@@ -36,6 +36,5 @@ public class User {
     public void setBudgetAlertsEnabled(boolean budgetAlertsEnabled) { this.budgetAlertsEnabled = budgetAlertsEnabled; }
     public boolean isGoalRemindersEnabled() { return goalRemindersEnabled; }
     public void setGoalRemindersEnabled(boolean goalRemindersEnabled) { this.goalRemindersEnabled = goalRemindersEnabled; }
-    public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 }
